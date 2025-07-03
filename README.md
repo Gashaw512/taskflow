@@ -44,7 +44,7 @@ Designed with a clean architecture and smart workflows, TaskFlow helps you organ
 - Instantly capture thoughts with a message
 
 ### 🌐 Multi-language Support
-- English, German, Spanish, Greek, Japanese, Ukrainian, and more
+- English,  Amharic, German, Spanish, Greek, Japanese, Ukrainian, and more
 
 ### 💡 Developer Friendly
 - Built with Node.js, Express, React, and SQLite
