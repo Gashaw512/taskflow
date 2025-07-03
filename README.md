@@ -71,10 +71,8 @@ docker run \
   -p 3002:3002 \
   -d taskflow/taskflow:latest
 
-  ## 🚀 Getting Started
-
-Once TaskFlow is running in Docker, visit:  
-👉 **[http://localhost:3002](http://localhost:3002)** to get started.
+Then open your browser and go to:  
+👉 **http://localhost:3002**
 
 ---
 
@@ -90,10 +88,10 @@ Once TaskFlow is running in Docker, visit:
 
 ### Optional
 
-| Variable                  | Description                                                    |
-|---------------------------|----------------------------------------------------------------|
-| `TFL_INTERNAL_SSL_ENABLED`| Enable HTTPS internally (default: `false`)                     |
-| `TFL_ALLOWED_ORIGINS`     | CORS whitelist (e.g., `https://taskflow.com,http://localhost:3002`) |
+| Variable                   | Description                                                     |
+|----------------------------|-----------------------------------------------------------------|
+| `TFL_INTERNAL_SSL_ENABLED` | Enable HTTPS internally (default: `false`)                      |
+| `TFL_ALLOWED_ORIGINS`      | CORS whitelist (e.g., `https://taskflow.com,http://localhost`) |
 
 ---
 
@@ -123,6 +121,7 @@ npm install
 cd backend
 npm install
 
+
 ## 🚀 Start the Application (Development)
 
 ### ▶️ Start the Backend (Express API)
@@ -131,19 +130,24 @@ npm install
 cd backend
 npm run dev
 
+▶️ Start the Frontend (React Client)
 cd ..
 npm run dev
 
-Once both servers are running, open your browser and navigate to:
-👉 http://localhost:8080
 
-🗃️ Database Management
-The database is automatically initialized on the first run.
-For manual control and development operations:
+Then open your browser at:  
+👉 **http://localhost:8080**
 
+---
+
+## 🗃️ Database Management
+
+The database initializes automatically on first run. You can also manage it manually:
+
+```bash
 cd backend
 
-# Drop and recreate all tables (Destructive)
+# Drop and recreate all tables (destructive)
 npm run db:init
 
 # Sync models without deleting existing data
@@ -152,25 +156,17 @@ npm run db:sync
 # Apply defined migrations
 npm run db:migrate
 
-# Full reset: drops all tables and recreates
+# Full reset: drop and recreate all tables
 npm run db:reset
 
 📦 Migrations
-To manage schema changes using Sequelize migrations:
+Manage schema changes using Sequelize migrations:
 
-# Create a new migration file
+# Create a new migration
 npm run migration:create add-status-to-projects
 
-# Apply all pending migrations
+# Apply pending migrations
 npm run migration:run
-
-# Create a new migration file
-npm run migration:create add-status-to-projects
-
-# Apply all pending migrations
-npm run migration:run
-
-You can also check status or undo migrations:
 
 # Check migration status
 npm run migration:status
@@ -185,20 +181,18 @@ npm run migration:undo:all
 TaskFlow uses secure, session-based authentication with HTTP-only cookies.
 
 🧪 Default Development Credentials
-If no admin credentials are set via environment variables, the following will be used:
+If no admin credentials are provided via environment variables, the app uses:
 
 Email: dev@example.com
 
 Password: password123
 
-
 👤 Manually Create a New User
-To create a user manually in development:
 
 cd backend
 npm run user:create user@example.com securepassword
 
-cd backend
-npm run user:create user@example.com securepassword
-
+✅ License
+TaskFlow is free for personal use.
+For commercial use, please refer to the LICENSE file.
 
