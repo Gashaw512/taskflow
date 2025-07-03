@@ -4,8 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="/">
-    <title>Tududi</title>
-  </head>
+    <title>Taskflow</title>
+
+    <script>
+      (function() {
+        try {
+          const storedPreference = localStorage.getItem('isDarkMode');
+          const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          
+          // Determine the initial theme state
+          const isDarkMode = storedPreference !== null
+            ? storedPreference === 'true' // Use stored preference if available
+            : prefersDarkMode;           // Otherwise, use system preference
+          
+          // Apply or remove the 'dark' class to the <html> element
+          if (isDarkMode) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {
+          // Log any errors during theme application, but don't block the page
+          console.error("Failed to apply initial theme:", e);
+        }
+      })();
+    </script>
+    </head>
   <body>
     <div id="root"></div>
   </body>

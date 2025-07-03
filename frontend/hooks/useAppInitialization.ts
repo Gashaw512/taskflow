@@ -1,13 +1,15 @@
+
 import { useTranslation } from 'react-i18next';
 import { useAuth } from './useAuth'; 
 import { useDarkMode } from './useDarkMode'; 
-
+import { User } from '../entities/User'; 
 interface AppInitializationHook {
   isInitialized: boolean;
   isAuthenticated: boolean;
-  currentUser: any | null; 
-  setCurrentUser: (user: any | null) => void; 
-  toggleDarkMode: () => void;
+  currentUser: User | null; 
+  setCurrentUser: (user: User | null) => void; 
+  isDarkMode: boolean; 
+  toggleDarkMode: () => void; 
 }
 
 export const useAppInitialization = (): AppInitializationHook => {
@@ -15,6 +17,7 @@ export const useAppInitialization = (): AppInitializationHook => {
   const { currentUser, loading: authLoading, setCurrentUser, isAuthenticated } = useAuth();
   const { isDarkMode, toggleDarkMode } = useDarkMode(); 
 
+  // The application is considered initialized when i18n is ready and auth loading is complete
   const isInitialized = i18n.isInitialized && !authLoading;
 
   return {
@@ -23,6 +26,6 @@ export const useAppInitialization = (): AppInitializationHook => {
     currentUser,
     setCurrentUser,
     isDarkMode, 
-    toggleDarkMode,
+    toggleDarkMode, 
   };
 };
